@@ -1,0 +1,8 @@
+parameters:
+    level: 9 # Can be increased for stricter checks (max: 9)
+    paths:
+        - app/  # Only analyze Laravel app directory
+    excludePaths:
+        - bootstrap/cache/*
+        - storage/*
+    reportUnmatchedIgnoredErrors: false
