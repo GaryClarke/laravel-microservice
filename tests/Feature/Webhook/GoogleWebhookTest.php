@@ -7,7 +7,7 @@ use function Pest\Laravel\postJson;
 it('processes subscription purchase notifications', function () {
     $payload = getPayload();
 
-    $response = postJson('/api/webhook', $payload);
+    $response = postJson('/api/webhook', $payload, ['X-Webhook-Source' => 'Google']);
 
     $response->assertStatus(204);
 });
