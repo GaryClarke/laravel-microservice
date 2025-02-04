@@ -1,11 +1,8 @@
-Creating a Laravel Project
-Exploring a Laravel Project
-Course Dependencies
-PHPStan
-Composer Scripts
-Healthcheck Endpoints
-Pest Feature Tests
-Single Action Controllers
-Webhook Payloads
-Webhook DTO
-Instantiate Webhook DTO
+Why Some Developers Avoid Facades
+
+Some developers prefer Dependency Injection (DI) over facades because:
+
+✅ Explicit Dependencies: With DI, you can see exactly what dependencies a class requires.
+✅ Easier to Swap Implementations: If you ever need to replace a service, DI makes it easier.
+✅ Better for Testing: DI makes it easier to mock services without relying on Laravel’s
+  facade testing utilities.
