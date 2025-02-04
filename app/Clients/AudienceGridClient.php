@@ -13,6 +13,7 @@ class AudienceGridClient implements AudiencegridClientInterface
 
     public function __construct()
     {
+        /** @phpstan-ignore assign.propertyType */
         $this->apiUrl = config('services.audiencegrid.api_url');
     }
 
