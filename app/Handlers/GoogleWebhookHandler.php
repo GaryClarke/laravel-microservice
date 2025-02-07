@@ -18,6 +18,7 @@ class GoogleWebhookHandler implements WebhookHandler
 
     public function handle(Webhook $webhook): void
     {
+        dump('google');
         // STEP 1: Use a factory class to extract relevant data into Google\Subscription
     }
 }

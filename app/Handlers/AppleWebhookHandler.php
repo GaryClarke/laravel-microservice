@@ -18,6 +18,6 @@ class AppleWebhookHandler implements WebhookHandler
 
     public function handle(Webhook $webhook): void
     {
-        // TODO: Implement handle() method.
+        dump('apple');
     }
 }

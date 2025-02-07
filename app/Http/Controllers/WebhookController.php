@@ -5,12 +5,18 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\DTOs\Webhook;
+use App\Handlers\HandlerDelegator;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class WebhookController
 {
+    public function __construct(
+        private HandlerDelegator $handlerDelegator,
+    ) {
+    }
+
     public function __invoke(Request $request): JsonResponse
     {
         // Determine the platform from header
@@ -21,6 +27,8 @@ class WebhookController
 
         // Instantiate the webhook DTO
         $webhook = new Webhook($platform, $payload);
+
+        $this->handlerDelegator->delegate($webhook);
 
         // ... do something with the webhook
 
