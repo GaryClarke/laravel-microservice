@@ -1,4 +1,6 @@
-<?php
+<?php // database/seeders/SubscriptionProviderSeeder.php
+
+declare(strict_types=1);
 
 namespace Database\Seeders;
 
