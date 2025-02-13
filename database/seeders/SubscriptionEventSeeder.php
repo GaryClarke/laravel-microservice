@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\DTOs\Google\SubscriptionEventCategory;
+use App\DTOs\SubscriptionEventCategory;
 use App\Models\SubscriptionEvent;
 use App\Models\SubscriptionProvider;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,7 +23,7 @@ class SubscriptionEventSeeder extends Seeder
             [
                 'subscription_provider_id' => $googleProvider->id,
                 'name' => 'subscription_started',
-                'category' => \App\DTOs\SubscriptionEventCategory::START->value,
+                'category' => SubscriptionEventCategory::START->value,
                 'notification_type' => 4,
                 'in_trial' => false,
             ],
@@ -63,6 +63,5 @@ class SubscriptionEventSeeder extends Seeder
                 'in_trial' => false,
             ]
         ]);
-
     }
 }
