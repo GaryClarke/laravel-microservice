@@ -56,7 +56,7 @@
             "@php artisan migrate --graceful --ansi"
         ],
         "test": [
-            "vendor/bin/phpstan",
+            "vendor/bin/phpstan --memory-limit=512M",
             "php artisan test"
         ]
     },

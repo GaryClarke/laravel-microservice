@@ -30,7 +30,9 @@ class SubscriptionEvent extends Model
         'category' => SubscriptionEventCategory::class,
     ];
 
-    // relationship to sub provider
+    /**
+     * @phpstan-ignore missingType.generics
+     */
     public function provider(): BelongsTo
     {
         return $this->belongsTo(SubscriptionProvider::class);
