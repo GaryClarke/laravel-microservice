@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\Http;
 use function Pest\Laravel\postJson;
 
 it('processes subscription purchase notifications', function () {
-    $subEvents = SubscriptionEvent::all();
-    dd($subEvents);
-
     $payload = getPayload();
 
     Http::fake();
