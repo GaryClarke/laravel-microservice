@@ -6,10 +6,15 @@ namespace App\DTOs\Google;
 
 use App\DTOs\Webhook;
 use App\Models\SubscriptionEvent;
+use App\Repositories\SubscriptionEventRepository;
 use Carbon\CarbonImmutable;
 
 class SubscriptionFactory
 {
+    public function __construct(private SubscriptionEventRepository $eventRepository)
+    {
+    }
+
     public function create(Webhook $webhook): Subscription
     {
         $data = $webhook->getPayload();
@@ -19,10 +24,10 @@ class SubscriptionFactory
         $developerNotification = $data['data']['developer_notification'];
 
         // Perform DB lookup to find matching event
-        $subEvent = SubscriptionEvent::where([
-            ['notification_type', '=', $subscriptionNotification['notification_type']],
-            ['in_trial', '=', $subscriptionNotification['in_trial']],
-        ])->firstOrFail();
+        $subEvent = $this->eventRepository->findByNotificationType(
+            $subscriptionNotification['notification_type'],
+            $subscriptionNotification['in_trial']
+        );
 
         // Return a populated Subscription DTO
         return new Subscription(

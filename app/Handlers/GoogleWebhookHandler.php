@@ -24,7 +24,7 @@ class GoogleWebhookHandler implements WebhookHandler
     public function handle(Webhook $webhook): void
     {
         // STEP 1: Use a factory class to extract relevant data into Google\Subscription
-          = $this->subscriptionFactory->create($webhook);
+         $subscription = $this->subscriptionFactory->create($webhook);
 
         dd($subscription);
     }
