@@ -1,6 +1,11 @@
 - Google Subscription DTO
-- Database Schema
+- Database Schema and Lookup Data
 - Database Migrations
 - Model Attribute Casting
 - Database Seeders
 - Seeding The Test Database
+- Factory Classes
+- Refactoring for Testability
+- Custom Exceptions
+- Test Doubles and Mockery
+- Testing Expected Exceptions

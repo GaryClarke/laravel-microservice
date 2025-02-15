@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\DTOs\Google\SubscriptionFactory;
 use App\DTOs\Webhook;
 use App\Handlers\AppleWebhookHandler;
 use App\Handlers\GoogleWebhookHandler;
@@ -11,8 +12,10 @@ test('supports', function (
     bool $googleShouldHandle,
     bool $appleShouldHandle
 ) {
+    $subFactory = Mockery::mock(SubscriptionFactory::class);
+
     // Create instances of handlers
-    $googleHandler = new GoogleWebhookHandler();
+    $googleHandler = new GoogleWebhookHandler($subFactory);
     $appleHandler = new AppleWebhookHandler();
 
     // Create the webhook DTO
