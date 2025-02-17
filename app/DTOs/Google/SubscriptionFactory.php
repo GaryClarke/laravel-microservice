@@ -1,4 +1,4 @@
-<?php
+<?php // app/DTOs/Google/SubscriptionFactory.php
 
 declare(strict_types=1);
 
