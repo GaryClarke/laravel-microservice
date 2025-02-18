@@ -1,4 +1,4 @@
-<?php
+<?php // app/Exceptions/WebhookException.php
 
 declare(strict_types=1);
 
