@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace App\Forwarders\Google;
+
 use App\Contracts\GoogleSubscriptionForwarder;
 use App\DTOs\Google\Subscription;
 use App\DTOs\SubscriptionEventCategory;
@@ -15,6 +17,6 @@ class SubscriptionStartForwarder implements GoogleSubscriptionForwarder
 
     public function forward(Subscription $subscription): void
     {
-        // TODO: Implement forward() method.
+        dd($subscription);
     }
 }
