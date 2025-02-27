@@ -1,4 +1,6 @@
-<?php
+<?php // tests/Pest.php
+
+declare(strict_types=1);
 
 /*
 |--------------------------------------------------------------------------
@@ -10,6 +12,9 @@
 | need to change it using the "pest()" function to bind a different classes or traits.
 |
 */
+
+use App\DTOs\Google\Subscription;
+use Carbon\CarbonImmutable;
 
 pest()->extend(Tests\TestCase::class)
   ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
@@ -42,7 +47,44 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function createSubscription(array $overrides = []): Subscription
 {
-    // ..
+    $defaults = [
+        'subscription_id' => 'premium_monthly',
+        'notification_type' => 4,
+        'in_trial' => false,
+        'event_time' => CarbonImmutable::now(),
+        'event' => 'subscription_started',
+        'category' => 'START',
+        'product_id' => 'premium_monthly',
+        'order_id' => 'GPA.1234-5678-9012-34567',
+        'user_id' => 'USER-001',
+        'email' => 'joe@example.com',
+        'auto_renewing' => true,
+        'purchase_date' => CarbonImmutable::now(),
+        'expiry_date' => CarbonImmutable::now()->addMonth(),
+        'currency' => 'USD',
+        'region' => 'US',
+    ];
+
+    $data = array_merge($defaults, $overrides);
+
+    return new Subscription(
+        subscriptionId: $data['subscription_id'],
+        notificationType: $data['notification_type'],
+        inTrial: $data['in_trial'],
+        eventTime: $data['event_time'],
+        event: $data['event'],
+        category: $data['category'],
+        productId: $data['product_id'],
+        orderId: $data['order_id'],
+        userId: $data['user_id'],
+        email: $data['email'],
+        autoRenewing: $data['auto_renewing'],
+        purchaseDate: $data['purchase_date'],
+        expiryDate: $data['expiry_date'],
+        currency: $data['currency'],
+        region: $data['region']
+    );
 }
+
