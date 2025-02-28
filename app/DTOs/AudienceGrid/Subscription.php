@@ -1,4 +1,4 @@
-<?php
+<?php // app/DTOs/AudienceGrid/Subscription.php
 
 declare(strict_types=1);
 
