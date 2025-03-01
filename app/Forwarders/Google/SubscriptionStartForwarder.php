@@ -7,6 +7,7 @@ namespace App\Forwarders\Google;
 use App\Contracts\GoogleSubscriptionForwarder;
 use App\DTOs\Google\Subscription as GoogleSubscription;
 use App\DTOs\SubscriptionEventCategory;
+use App\Mappers\Google\SubscriptionMapper;
 
 class SubscriptionStartForwarder implements GoogleSubscriptionForwarder
 {
