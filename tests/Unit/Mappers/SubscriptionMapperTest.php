@@ -8,23 +8,7 @@ use App\Mappers\Google\SubscriptionMapper;
 use Carbon\CarbonImmutable;
 
 it('successfully maps a GoogleSubscription to an AudienceGridSubscription', function () {
-    $googleSubscription = new GoogleSubscription(
-        subscriptionId: 'premium_monthly',
-        notificationType: 4,
-        inTrial: false,
-        eventTime: CarbonImmutable::now(),
-        event: 'subscription_started',
-        category: 'START',
-        productId: 'premium_monthly',
-        orderId: 'GPA.1234-5678-9012-34567',
-        userId: 'USER-001',
-        email: 'joe@example.com',
-        autoRenewing: true,
-        purchaseDate: CarbonImmutable::now()->subMonth(),
-        expiryDate: CarbonImmutable::now()->addMonth(),
-        currency: 'USD',
-        region: 'US',
-    );
+    $googleSubscription = createSubscription();
 
     $mapper = new SubscriptionMapper();
     $audienceGridSubscription = $mapper->mapToAudienceGrid($googleSubscription);
@@ -40,7 +24,7 @@ it('successfully maps a GoogleSubscription to an AudienceGridSubscription', func
                 'in_trial' => false,
                 'product_name' => 'premium_monthly',
                 'renewal_date' => CarbonImmutable::now()->addMonth()->toIso8601String(),
-                'start_date' => CarbonImmutable::now()->subMonth()->toIso8601String(),
+                'start_date' => CarbonImmutable::now()->toIso8601String(),
             ],
             'user' => [
                 'id' => 'USER-001',
