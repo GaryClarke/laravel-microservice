@@ -1,4 +1,4 @@
-<?php
+<?php // app/Validators/SubscriptionValidator.php
 
 declare(strict_types=1);
 
