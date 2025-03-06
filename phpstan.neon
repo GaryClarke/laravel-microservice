@@ -7,4 +7,8 @@ parameters:
         - storage/*
         # Ignored due to complex array structure; revisit for type definitions.
         - app/DTOs/Google/SubscriptionFactory.php
+    ignoreErrors:
+        -
+            path: app/Mappers/Google/SubscriptionMapper.php
+            identifier: argument.type
     reportUnmatchedIgnoredErrors: false

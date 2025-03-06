@@ -7,6 +7,7 @@ namespace App\Mappers\Google;
 use App\DTOs\Google\Subscription as GoogleSubscription;
 use App\DTOs\AudienceGrid\Subscription as AudienceGridSubscription;
 use App\Exceptions\WebhookException;
+use Throwable;
 
 class SubscriptionMapper
 {

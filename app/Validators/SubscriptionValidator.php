@@ -14,6 +14,11 @@ class SubscriptionValidator
     {
     }
 
+    /**
+     * @param Arrayable<string, mixed> $subscription
+     * @param array<string, mixed> $rules
+     * @throws WebhookException
+     */
     public function validate(Arrayable $subscription, array $rules): void
     {
         $validator = $this->validator->make($subscription->toArray(), $rules);

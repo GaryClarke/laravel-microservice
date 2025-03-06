@@ -7,6 +7,9 @@ namespace App\DTOs\AudienceGrid;
 use Carbon\CarbonImmutable;
 use Illuminate\Contracts\Support\Arrayable;
 
+/**
+ * @implements Arrayable<string, mixed>
+ */
 class Subscription implements Arrayable
 {
     private string $event;
@@ -22,6 +25,11 @@ class Subscription implements Arrayable
     private string $email;
     private string $region;
 
+    /**
+     * Returns validation rules for the subscription.
+     *
+     * @return array<string, mixed>
+     */
     public static function rules(): array
     {
         return [
