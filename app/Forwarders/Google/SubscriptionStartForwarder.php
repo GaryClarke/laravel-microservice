@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Forwarders\Google;
 
+use App\Clients\AudienceGridClient;
 use App\Contracts\GoogleSubscriptionForwarder;
 use App\DTOs\Google\Subscription as GoogleSubscription;
 use App\DTOs\SubscriptionEventCategory;
@@ -12,8 +13,10 @@ use App\Validators\SubscriptionValidator;
 
 class SubscriptionStartForwarder implements GoogleSubscriptionForwarder
 {
-    public function __construct(private SubscriptionValidator $validator)
-    {
+    public function __construct(
+        private SubscriptionValidator $validator,
+        private AudienceGridClient $audienceGridClient
+    ) {
     }
 
     public function supports(GoogleSubscription $googleSubscription): bool
@@ -29,8 +32,7 @@ class SubscriptionStartForwarder implements GoogleSubscriptionForwarder
         // Validate the $audienceGridSubscription
         $this->validator->validate($audienceGridSubscription, $audienceGridSubscription::rules());
 
-        dd($audienceGridSubscription);
-
         // Forward the $audienceGridSubscription data
+        $this->audienceGridClient->post($audienceGridSubscription->toArray());
     }
 }
