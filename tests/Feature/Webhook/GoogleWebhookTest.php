@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Models\SubscriptionEvent;
+use App\Contracts\ErrorHandler;
+use App\Exceptions\WebhookException;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
 use function Pest\Laravel\postJson;
@@ -37,6 +38,36 @@ it('processes subscription purchase notifications', function () {
     });
 
     $response->assertStatus(204);
+});
+
+it('handles errors when validation fails', function () {
+    // Mock ErrorHandler and bind it to the service container
+    $mockErrorHandler = Mockery::mock(ErrorHandler::class);
+
+    $this->app->instance(ErrorHandler::class, $mockErrorHandler);
+
+    // Expect handle it to be called exactly once
+    // with a WebhookException argument
+    $mockErrorHandler->shouldReceive('handle')
+        ->once()
+        ->with(Mockery::on(fn ($e) => $e instanceof WebhookException
+            && str_contains($e->getMessage(), 'Validation failed'))
+        );
+
+
+    $payload = getPayload();
+    $payload['data']['developer_notification']['email'] = 'invalid-email';
+
+    Http::fake();
+
+    // When
+    $response = postJson('/api/webhook', $payload, ['X-Webhook-Source' => 'Google']);
+
+    // No external requests due to validation error
+    Http::assertSentCount(0);
+
+    // Response should be 400
+    $response->assertStatus(400);
 });
 
 function getPayload(
