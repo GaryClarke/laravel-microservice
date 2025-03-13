@@ -44,10 +44,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton(ErrorHandler::class, function () {
             if (app()->environment('production')) {
-                return AppErrorHandler::class;
+                return new AppErrorHandler();
             }
 
-            return DebugErrorHandler::class;
+            return new DebugErrorHandler();
         });
     }
 
