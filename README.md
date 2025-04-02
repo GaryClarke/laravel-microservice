@@ -1,66 +1,97 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Microservice
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is the official repository for the [**Laravel Microservice** course by Gary Clarke](https://www.garyclarke.tech/p/laravel-microservice).
 
-## About Laravel
+The application is built using the Laravel framework and is designed to demonstrate real-world microservice architecture, including how to receive, process, and forward webhook events to other services.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 About the Course
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Learn Laravel by building a real-world microservice from scratch:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Handle webhook events from external platforms (e.g. Apple & Google)
+- Validate and process incoming data
+- Forward structured payloads to a second Laravel app (AudienceGrid)
+- Use Laravel’s powerful features like tagged services, DTOs, and HTTP testing
 
-## Learning Laravel
+🎓 [Check out the full course here](https://www.garyclarke.tech/p/laravel-microservice)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🧠 What You'll Learn
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Laravel microservice architecture
+- Webhook handling
+- DTOs, service providers, and configuration management
+- Service-to-service communication via Laravel's HTTP client
+- Testing strategies with Pest
+- Environment-specific error handling
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🌱 Branch Structure
 
-## Laravel Sponsors
+Each Git branch corresponds to a lesson or milestone in the course. Simply check out the relevant branch to follow along with any section.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Example:
+```bash
+git checkout 2-phpstan
+git checkout 3-composer-scripts
+```
 
-### Premium Partners
+## ⚙️ Getting Started
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Clone the repo and install dependencies:
 
-## Contributing
+```bash
+git clone https://github.com/GaryClarke/laravel-microservice.git
+cd laravel-microservice
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Database Setup
 
-## Code of Conduct
+SQLite is preconfigured. You can create a blank database file like this:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+touch database/database.sqlite
+```
 
-## Security Vulnerabilities
+Then run migrations:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan migrate
+```
 
-## License
+## 🔗 Communication with AudienceGrid
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This microservice forwards data to another Laravel application called **AudienceGrid**, which simulates a CRM-like system.
+
+👉 [AudienceGrid GitHub Repo](https://github.com/GaryClarke/audiencegrid)
+
+You can run both apps simultaneously:
+```bash
+php artisan serve --port=8000 # Laravel Microservice
+php artisan serve --port=8005 # AudienceGrid
+```
+
+## 🧪 Running Tests
+
+The app includes Pest and PHPStan for testing and static analysis:
+
+```bash
+composer test
+```
+
+## 📌 Notes
+
+If you're comfortable with Composer and Laravel, you’re welcome to install dependencies one-by-one as seen in the videos. Otherwise, use the included `composer.json` for consistency with the course setup.
+
+## 🧑‍🏫 Support
+
+Have a question? Ask inside the course.
+
+## 📄 License
+
+This repo is provided for **educational use only** as part of the Laravel Microservice course.
+
+---
+
+Happy coding!
+
+– Gary
