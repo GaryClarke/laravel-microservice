@@ -13,7 +13,7 @@ Learn Laravel by building a real-world microservice from scratch:
 - Forward structured payloads to a second Laravel app (AudienceGrid)
 - Use Laravel’s powerful features like tagged services, DTOs, and HTTP testing
 
-🎓 [Check out the full course here](https://www.garyclarke.tech/p/laravel-microservice)
+🎓 [Check out the full course here](https://www.garyclarke.tech/p/laravel-microservice) use coupon GCTREPO20 for a 20% course discount.
 
 ## 🧠 What You'll Learn
 
